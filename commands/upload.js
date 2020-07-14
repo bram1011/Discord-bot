@@ -19,10 +19,6 @@ module.exports = {
 
             const storage = mega({email: process.env.EMAIL, password: process.env.PASSWORD});
             storage.on('ready', function() {
-                isReady = true;
-            });
-
-            if (isReady) {
                 collector.stop();
             
                 const attachment = newMsg.attachments.first(1)[0];
@@ -55,11 +51,7 @@ module.exports = {
                 upload.on('error', () => {
                     newMsg.reply('sorry I had an oopsie and could not upload that file');
                 })
-            }
-
-            else {
-                newMsg.reply("try again in a minute. If it still doesn't work something may have gone wrong when logging into Mega.");
-            }
+            });
             
 
         });
