@@ -5,11 +5,6 @@ require('dotenv').config();
 
 var isReady = false;
 
-const storage = mega({email: process.env.EMAIL, password: process.env.PASSWORD});
-storage.on('ready', function() {
-    isReady = true;
-});
-
 
 module.exports = {
     name: 'upload',
@@ -21,6 +16,11 @@ module.exports = {
         const collector = msg.channel.createMessageCollector(filter, {time: 15000});
 
         collector.on('collect', newMsg => {
+
+            const storage = mega({email: process.env.EMAIL, password: process.env.PASSWORD});
+            storage.on('ready', function() {
+                isReady = true;
+            });
 
             if (isReady) {
                 collector.stop();
