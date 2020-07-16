@@ -12,7 +12,7 @@ module.exports = {
     execute(msg) {
         msg.reply("please send the image or video you want to upload.");
 
-        const filter = newMsg => (newMsg.member.id == msg.member.id) && (newMsg.attachments.size > 0);
+        const filter = newMsg => (newMsg.member.id == msg.member.id) && (newMsg.attachments.size > 0) && (!newMsg.mentions.has(process.env.BOTID));
         const collector = msg.channel.createMessageCollector(filter, {time: 15000});
 
         collector.on('collect', newMsg => {

@@ -7,7 +7,7 @@ module.exports = {
         msg.reply("please mention (@) the people you would like to split into teams");
 
         const filter = newMsg => newMsg.member.id == msg.member.id;
-        const collector = msg.channel.createMessageCollector(filter, {time: 15000});
+        const collector = msg.channel.createMessageCollector(filter, {time: 30000});
 
         collector.on('collect', newMsg => {
             collector.stop();
@@ -56,11 +56,11 @@ module.exports = {
             
             newMsg.channel.send("Team 1:");
             if (teamOne.length > 0) {
-                newMsg.channel.send(teamOne.toString());
+                newMsg.channel.send(teamOne.join(', '));
             }
             newMsg.channel.send("Team 2:");
             if (teamTwo.length > 0) {
-                newMsg.channel.send(teamTwo.toString());
+                newMsg.channel.send(teamTwo.join(', '));
             }
             else {
                 newMsg.reply("well you are gonna have to send me more than one person");

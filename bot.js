@@ -14,8 +14,6 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 
-const botID = '731729566107697252';
-
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}`);
@@ -24,10 +22,11 @@ client.on('ready', () => {
 client.on('message', msg => {
     // Every message sent
 
-    if (msg.mentions.users.has(botID)) {
+    if (msg.mentions.users.has(process.env.BOTID)) {
         // Extract command from message
         let command = msg.content.toLowerCase();
-        command = command.substr(23);
+        let commandIndex = command.indexOf('> ') + 2;
+        command = command.substr(commandIndex);
         console.log(command);
 
         if (!client.commands.has(command)) return;

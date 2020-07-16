@@ -8,7 +8,7 @@ module.exports = {
         const { commands } = msg.client;
 
         data.push('Currently available commands: ');
-        data.push(commands.map(command => command.name).join(', '));
+        data.push(commands.map(command => command.name).join('\n'));
 
         return msg.author.send(data, { split: true })
             .then(() => {
