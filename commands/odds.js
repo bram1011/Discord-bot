@@ -72,7 +72,7 @@ module.exports = {
                                             else {
                                                 msg.channel.send(`${challName} picked ${challengerNum} and ${oppName} picked ${opponentNum}`);
                                             }
-                                        }, 0)
+                                        }, 5000)
                                     })
                                     // Opponent number error
                                     .catch((oppNum) => {
