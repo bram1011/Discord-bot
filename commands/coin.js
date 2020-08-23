@@ -9,5 +9,6 @@ module.exports = {
         else {
             msg.reply("tails!");
         }
+        return;
     }
 }
