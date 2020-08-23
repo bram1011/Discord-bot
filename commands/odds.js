@@ -45,6 +45,7 @@ module.exports = {
                         // GETTING ODDS FROM OPPONENT
                         getOddsResponse(oppBotMsg.channel, oppFilter).then((odds) => {
                             // GETTING FIRST NUMBER FROM THE CHALLENGER
+                            opponent.send(`Please wait for ${challName}'s response.`);
                             challenger.send(`Odds are out of ${odds}, please send a number between 0 and ${odds}.`).then((challBotMsg) => {
                                 getOddsResponse(challBotMsg.channel, challFilter).then((challengerNum) => {
                                     if (challengerNum < 0 || challengerNum > odds) {
@@ -54,6 +55,7 @@ module.exports = {
                                     }
 
                                     // GETTING SECOND NUMBER FROM OPPONENT
+                                    challenger.send(`Please wait for ${oppName}'s response.`);
                                     opponent.send(`Please send a number between 0 and ${odds}`);
                                     getOddsResponse(oppBotMsg.channel, oppFilter).then((opponentNum) => {
                                         if (opponentNum < 0 || opponentNum > odds) {
