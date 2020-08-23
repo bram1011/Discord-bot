@@ -1,5 +1,5 @@
 module.exports = {
-    name:'o',
+    name:'odds',
     description:'plays what are the odds with two users using DMs',
     execute(msg) {
 
